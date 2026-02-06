@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - VidyaGuide AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!-- Navigation Guard -->
+    <script src="../js/guard.js"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">VidyaGuide AI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="resume-builder.html">Resume Builder</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career-guidance.html">Chatbot</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <button class="btn btn-outline-danger btn-sm px-3" onclick="logout()">Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4 mb-5">
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs mb-4 bg-white p-2 rounded-3 shadow-sm border-0" id="resumeTabs" role="tablist">
+            <li class="nav-item flex-grow-1 text-center" role="presentation">
+                <button class="nav-link active w-100 fw-bold py-3 border-0" id="builder-tab" data-bs-toggle="tab"
+                    data-bs-target="#builder-content" type="button" role="tab">
+                    <i class="bi bi-pencil-square me-2"></i>1. Resume Builder
+                </button>
+            </li>
+            <li class="nav-item flex-grow-1 text-center" role="presentation">
+                <button class="nav-link w-100 fw-bold py-3 border-0" id="analyzer-tab" data-bs-toggle="tab"
+                    data-bs-target="#analyzer-content" type="button" role="tab">
+                    <i class="bi bi-cpu-fill me-2"></i>2. AI Resume Analyzer
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="resumeTabsContent">
+            <!-- BUILDER TAB -->
+            <div class="tab-pane fade show active" id="builder-content" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="card p-4 shadow-sm mb-4 border-0">
+                            <h4 class="fw-bold text-primary mb-4">Resume Editor</h4>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold small">Choose Template</label>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary active flex-grow-1 btn-sm"
+                                        id="btn-template-1">Classic</button>
+                                    <button class="btn btn-outline-primary flex-grow-1 btn-sm"
+                                        id="btn-template-2">Modern</button>
+                                    <button class="btn btn-outline-primary flex-grow-1 btn-sm"
+                                        id="btn-template-3">Professional</button>
+                                </div>
+                            </div>
+
+                            <form id="resume-form">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold small">Full Name</label>
+                                    <input type="text" id="res-name" class="form-control" placeholder="John Doe">
+                                </div>
+                                <div class="row gx-2">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-semibold small">Email</label>
+                                        <input type="email" id="res-email" class="form-control"
+                                            placeholder="john@example.com">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-semibold small">Phone</label>
+                                        <input type="text" id="res-phone" class="form-control"
+                                            placeholder="+91 98765 43210">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold small">City / Location</label>
+                                    <input type="text" id="res-location" class="form-control"
+                                        placeholder="Mumbai, India">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold small">LinkedIn / GitHub (Optional)</label>
+                                    <input type="text" id="res-social" class="form-control"
+                                        placeholder="linkedin.com/in/johndoe">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold small">Career Goal / Summary</label>
+                                    <textarea id="res-goal" class="form-control" rows="3"
+                                        placeholder="A passionate student looking for..."></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold small">Education</label>
+                                    <textarea id="res-edu" class="form-control" rows="2"
+                                        placeholder="University, Course, Years"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold small">CGPA / Percentage (Optional)</label>
+                                    <input type="text" id="res-cgpa" class="form-control" placeholder="9.0 or 85%">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold small">Projects</label>
+                                    <textarea id="res-projects" class="form-control" rows="3"
+                                        placeholder="Project Name: Description..."></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold small">Skills</label>
+                                    <input type="text" id="res-skills" class="form-control"
+                                        placeholder="Java, Python, Leadership">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold small">Interests</label>
+                                    <input type="text" id="res-interests" class="form-control"
+                                        placeholder="Open Source, Chess">
+                                </div>
+                                <div class="d-grid gap-2 mt-4">
+                                    <button type="button" class="btn btn-primary" onclick="downloadResume()">
+                                        <i class="bi bi-download me-2"></i>Download PDF
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+                        <h4 class="fw-bold mb-4">Live Preview</h4>
+                        <div id="resume-preview-container"
+                            class="preview-area p-3 bg-secondary rounded-3 shadow-sm overflow-auto"
+                            style="min-height: 800px;">
+                            <div id="resume-preview" class="resume-template-1 bg-white p-5 mx-auto"
+                                style="width: 100%; max-width: 210mm; min-height: 297mm; box-shadow: 0 0 20px rgba(0,0,0,0.1);">
+                                <!-- Template Content Loads Here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANALYZER TAB -->
+            <div class="tab-pane fade" id="analyzer-content" role="tabpanel">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card border-0 shadow-sm p-4 text-center">
+                            <h4 class="fw-bold text-primary"><i class="bi bi-magic me-2"></i>AI Resume Audit</h4>
+                            <p class="text-muted">Analyzing your resume against your profile goals automatically.</p>
+                            <div class="badge bg-light text-dark fw-normal p-2 border">
+                                <i class="bi bi-info-circle me-1"></i> Resume content is automatically taken from your
+                                Resume Builder.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 mb-4">
+                        <div id="analyzer-input-card" class="card border-0 shadow-sm p-4 h-100">
+                            <h5 class="fw-bold mb-3">Sync Preview</h5>
+                            <p class="small text-muted mb-3">This is the text the AI is currently analyzing:</p>
+                            <textarea id="resume-text-analyzer" class="form-control mb-3 bg-light" rows="18" readonly
+                                placeholder="Build your resume first to analyze it."></textarea>
+                            <button id="re-analyze-btn" class="btn btn-outline-primary btn-sm rounded-3">
+                                <i class="bi bi-arrow-repeat me-2"></i>Refresh Audit
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 mb-4">
+                        <div id="analyzer-results-card" class="card border-0 shadow-sm h-100 p-4">
+                            <!-- Loading Indicator (Hidden by default) -->
+                            <div id="analyzer-loading" class="d-none text-center my-auto py-5">
+                                <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;"
+                                    role="status"></div>
+                                <h5 class="fw-bold">AI is auditing your resume...</h5>
+                                <p class="text-muted small">Checking for ATS optimization, keywords, and goal alignment.
+                                </p>
+                            </div>
+
+                            <!-- Initial Empty State -->
+                            <div id="analyzer-placeholder" class="text-center my-auto py-5">
+                                <i class="bi bi-clipboard-data text-muted" style="font-size: 3rem;"></i>
+                                <h5 class="mt-3 text-muted">No Analysis Yet</h5>
+                                <p class="small text-muted px-5">Switch to this tab or edit your resume to trigger an
+                                    automatic AI audit.</p>
+                            </div>
+
+                            <!-- Dynamic Results Content -->
+                            <div id="analyzer-content-area" class="d-none">
+                                <div class="row align-items-center mb-4">
+                                    <div class="col-md-4 text-center border-end">
+                                        <h6 class="text-uppercase text-muted fw-bold small">RESUME SCORE</h6>
+                                        <div id="analyzer-score" class="display-3 fw-bold text-primary">--</div>
+                                        <div class="progress mt-2 mx-auto" style="height: 6px; width: 80%;">
+                                            <div id="analyzer-progress-bar" class="progress-bar bg-primary"
+                                                role="progressbar" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 ps-4">
+                                        <h6 class="fw-bold text-success small"><i
+                                                class="bi bi-hand-thumbs-up me-2"></i>AI Verdict</h6>
+                                        <p id="analyzer-verdict" class="small text-muted mb-0">Great job! Your resume
+                                            aligns well with your targets.</p>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6 class="fw-bold text-primary border-bottom pb-2 mb-3 small">
+                                        <i class="bi bi-shield-check me-2"></i>Key Strengths
+                                    </h6>
+                                    <ul id="analyzer-strengths" class="small ps-3 text-muted"></ul>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6 class="fw-bold text-warning border-bottom pb-2 mb-3 small">
+                                        <i class="bi bi-lightning-charge me-2"></i>Areas to Improve
+                                    </h6>
+                                    <ul id="analyzer-improvements" class="small ps-3 text-muted"></ul>
+                                </div>
+
+                                <div class="mb-0">
+                                    <h6 class="fw-bold text-info border-bottom pb-2 mb-3 small">
+                                        <i class="bi bi-tags me-2"></i>Missing Skills/Keywords
+                                    </h6>
+                                    <div id="analyzer-keywords" class="d-flex flex-wrap gap-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- PDF Generation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Bootstrap JS for Tabs -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/logout.js"></script>
+    <script src="../js/resume-builder.js"></script>
+</body>
+
+</html>
