@@ -42,11 +42,14 @@ Works smoothly across different devices
 Reduces resume creation time by ~50%
 
 🛠️ Technologies Used
-Technology	Purpose
-HTML	Structure of the website
-CSS	Styling and responsive design
-JavaScript	Interactive features
-API Integration	AI-powered guidance and resume analysis
+| Technology          | Purpose                                 |
+| ------------------- | --------------------------------------- |
+|   HTML              | Structure of the website                |
+|   CSS               | Styling and responsive design           |
+|   JavaScript        | Interactive features                    |
+|   API Integration   | AI-powered guidance and resume analysis |
+
+
 📂 Project Structure
 VidyaGuide
 │
